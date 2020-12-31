@@ -3,7 +3,7 @@ import { Menu } from "antd";
 
 export default function Navigator() {
   return (
-    <div style={{ backgroundColor: "#001529", position: "sticky", top: 0, left: 0, zIndex: 100 }}>
+    <div style={{ backgroundColor: "#001529", position: "sticky", top: 0, left: 0, zIndex: 2000 }}>
       <div className="container">
         <Menu mode="horizontal" theme="dark" style={{ height: 60, lineHeight: "60px" }}>
           <Menu.Item>
