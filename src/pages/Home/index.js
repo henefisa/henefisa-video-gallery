@@ -65,32 +65,32 @@ const data = [
       {
         title: "Blade and Soul",
         date: "10/3/2020",
-        path: "video/1"
+        path: "/video/1"
       },
       {
         title: "HIHI",
         date: "10/3/2020",
-        path: "video/2"
+        path: "/video/2"
       },
       {
         title: "Bye 2020",
         date: "10/3/2020",
-        path: "video/3"
+        path: "/video/3"
       },
       {
         title: "Yasuo 1 vs 5",
         date: "10/3/2020",
-        path: "video/4"
+        path: "/video/4"
       },
       {
         title: "Happy birthday",
         date: "10/3/2020",
-        path: "video/5"
+        path: "/video/5"
       },
       {
         title: "Problem",
         date: "10/3/2020",
-        path: "video/6"
+        path: "/video/6"
       }
     ]
   },
@@ -101,32 +101,32 @@ const data = [
       {
         title: "League Of Legend",
         date: "10/3/2020",
-        path: "/review/1"
+        path: "/video/1"
       },
       {
         title: "DoTA",
         date: "10/3/2020",
-        path: "/review/2"
+        path: "/video/2"
       },
       {
         title: "Gunny",
         date: "10/3/2020",
-        path: "/review/3"
+        path: "/video/3"
       },
       {
         title: "Happy New Year",
         date: "10/3/2020",
-        path: "/review/4"
+        path: "/video/4"
       },
       {
         title: "Minecraft",
         date: "10/3/2020",
-        path: "/review/5"
+        path: "/video/5"
       },
       {
         title: "Genshin Impact",
         date: "10/3/2020",
-        path: "/review/6"
+        path: "/video/6"
       }
     ]
   }
