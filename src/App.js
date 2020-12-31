@@ -1,24 +1,49 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import BasicLayout from "./layouts/Basic";
+import { lazy, Suspense } from "react";
+
+import "antd/dist/antd.css";
+import "./global.less";
+import { Spin } from "antd";
+import ScrollToTop from "./utils/ScrollToTop";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <BrowserRouter>
+      <BasicLayout>
+        <Suspense
+          fallback={
+            <div
+              style={{
+                position: "fixed",
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                backgroundColor: "rgba(0,0,0,0.2)",
+                display: "grid",
+                placeItems: "center"
+              }}
+            >
+              <Spin />
+            </div>
+          }
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+          <div className="container">
+            <ScrollToTop />
+            <Switch>
+              <Route path="/post/:id" exact component={lazy(() => import("./pages/Post"))} />
+              <Route path="/video/:id" exact component={lazy(() => import("./pages/Video"))} />
+              <Route path="/videos_tag/review" exact component={lazy(() => import("./pages/Video/Review"))} />
+              <Route path="/videos" exact component={lazy(() => import("./pages/Video/List"))} />
+              <Route path="/login" exact component={lazy(() => import("./pages/Login"))} />
+              <Route path="/register" exact component={lazy(() => import("./pages/Register"))} />
+              <Route path="/" exact component={lazy(() => import("./pages/Home"))} />
+            </Switch>
+          </div>
+        </Suspense>
+      </BasicLayout>
+    </BrowserRouter>
   );
 }
 

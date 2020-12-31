@@ -1,0 +1,24 @@
+.basic-layout {
+  .main-layout {
+    padding: 15px;
+    display: flex;
+    flex-wrap: wrap-reverse;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    .sider {
+      width: 100%;
+    }
+
+    .main {
+      width: 100%;
+    }
+    @media screen and (min-width: 768px) {
+      .sider {
+        width: 33%;
+      }
+      .main {
+        width: 66%;
+      }
+    }
+  }
+}

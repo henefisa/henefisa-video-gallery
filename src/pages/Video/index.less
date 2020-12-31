@@ -1,0 +1,111 @@
+.videos {
+  .video-title {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #000;
+  }
+
+  .video-details {
+    margin-top: 20px;
+    .date {
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+  }
+
+  .reviews {
+    padding: 20px 0;
+    .review-header {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      .review-summary {
+        width: 100%;
+      }
+      .review-score {
+        width: 100%;
+        text-align: center;
+        .score {
+          font-size: 32px;
+          color: #000;
+          height: 80px;
+          width: 80px;
+          text-align: center;
+          line-height: 68px;
+          font-weight: 700;
+          border: 6px solid #2f85dc;
+          border-radius: 50%;
+          display: inline-block;
+        }
+      }
+      @media screen and (min-width: 768px) {
+        .review-summary {
+          width: 70%;
+        }
+
+        .review-score {
+          width: 30%;
+          float: right;
+        }
+      }
+    }
+    .review-criteria {
+      margin-top: 20px;
+      .criteria {
+        background: #c3c3c3;
+        position: relative;
+        color: #fff;
+        margin-bottom: 20px;
+        width: 100%;
+        .score {
+          background: #2f85dc;
+          color: #fff;
+          padding: 1px 10px 2px;
+          box-sizing: border-box;
+          position: relative;
+          height: 29px;
+          .criteria-name {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 1);
+            position: absolute;
+            top: 50%;
+            left: 10px;
+            transform: translateY(-50%);
+            z-index: 999;
+          }
+        }
+        .criteria-score {
+          position: absolute;
+          font-size: 12px;
+          color: rgba(255, 255, 255, 1);
+          position: absolute;
+          top: 50%;
+          right: 10px;
+          transform: translateY(-50%);
+          z-index: 999;
+        }
+      }
+    }
+    .reviews-info {
+      text-align: left;
+      .meta {
+        text-transform: uppercase;
+        font-size: 11px;
+        display: block;
+        line-height: 27px;
+        .meta-info {
+          background: #e73737;
+          color: #fff;
+          padding: 5px 7px;
+        }
+        a {
+          background: #b2b2b2;
+          color: #fff;
+          padding: 5px 7px;
+          margin-left: 2px;
+        }
+      }
+    }
+  }
+}
