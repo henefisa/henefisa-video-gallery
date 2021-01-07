@@ -1,24 +1,54 @@
 import { Typography } from "antd";
 import Post from "../../components/Post";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Youtube from "react-youtube";
 import "./index.less";
+import { useEffect, useState } from "react";
 const { Paragraph } = Typography;
 
 export default function Video() {
+  const { id } = useParams();
+
+  const [videoData, setVideoData] = useState(null);
+  const [relatedVideos, setRelatedVideos] = useState([]);
+
+  useEffect(() => {
+    (async () => {
+      const response = await fetch(
+        `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails&id=${id}&key=${process.env.REACT_APP_YOUTUBE_API_KEY}`
+      );
+      const data = await response.json();
+      setVideoData(data.items[0]);
+    })();
+
+    (async () => {
+      const response = await fetch(
+        `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=4&relatedToVideoId=${id}&type=video&key=${process.env.REACT_APP_YOUTUBE_API_KEY}`
+      );
+      const data = await response.json();
+      console.log(data);
+      setRelatedVideos(data?.items?.slice(1) || []);
+    })();
+  }, [id]);
+
   return (
     <article className="videos">
-      <div className="video-title">Awesome Film Perfomance</div>
-      <Youtube className="youtube" videoId="qQm_iYS3WeI" opts={{ height: 400, width: "100%" }} />
+      <div className="video-title">{videoData?.snippet?.title}</div>
+      <Youtube
+        className="youtube"
+        videoId={id}
+        opts={{
+          height: 400,
+          width: "100%",
+          playerVars: {
+            autoplay: true
+          }
+        }}
+      />
       <div className="video-details">
         <div className="date">Published on September 29 ,2020</div>
         <Paragraph ellipsis={{ rows: 1, expandable: true, symbol: "Read more" }}>
-          Lorem ipsum dolor sit amet, ex vim nostrud phaedrum, docendi facilisi te sed. An molestie inimicus temporibus
-          per, vel debet aeque consequat et. Usu insolens deserunt suscipiantur et, ne enim laudem iudicabit his. Dicam
-          luptatum interpretaris te his, quo te nisl nostrum, id lobortis senserit contentiones cum. Dicant corpora
-          platonem usu ad, his sint officiis ad, et usu oratio cetero iisque. Choro interesset ei vis. Prompta singulis
-          gubergren eum no, ex mei mazim constituto. Ad appareat erroribus est, at legendos petentium vix, ei mea timeam
-          nostrum. His soluta possim no. Probo contentiones ut usu, dicam aliquando ius ad.
+          {videoData?.snippet?.description}
         </Paragraph>
       </div>
       <div className="reviews">
@@ -69,11 +99,16 @@ export default function Video() {
         </div>
       </div>
       <div className="related">
-        <h4 className="related-title">RELATED POSTS</h4>
+        <h4 className="related-title">RELATED VIDEOS</h4>
         <Post.Wrapper>
-          <Post title="Sample Post" date="20/10/2020" path={`/video/${~~(Math.random() * 100)}`} />
-          <Post title="Sample Post" date="20/10/2020" path={`/video/${~~(Math.random() * 100)}`} />
-          <Post title="Sample Post" date="20/10/2020" path={`/video/${~~(Math.random() * 100)}`} />
+          {relatedVideos.map(video => (
+            <Post
+              type="video"
+              thumb={video?.snippet?.thumbnails?.medium?.url}
+              title={video?.snippet?.title}
+              path={`/video/${video.id.videoId}`}
+            />
+          ))}
         </Post.Wrapper>
       </div>
     </article>

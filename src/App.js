@@ -1,7 +1,6 @@
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import BasicLayout from "./layouts/Basic";
 import { lazy, Suspense } from "react";
-
 import "antd/dist/antd.css";
 import "./global.less";
 import { Spin } from "antd";
@@ -34,10 +33,9 @@ function App() {
             <Switch>
               <Route path="/post/:id" exact component={lazy(() => import("./pages/Post"))} />
               <Route path="/video/:id" exact component={lazy(() => import("./pages/Video"))} />
-              <Route path="/videos_tag/review" exact component={lazy(() => import("./pages/Video/Review"))} />
-              <Route path="/videos" exact component={lazy(() => import("./pages/Video/List"))} />
               <Route path="/login" exact component={lazy(() => import("./pages/Login"))} />
               <Route path="/register" exact component={lazy(() => import("./pages/Register"))} />
+              <Route path="/playlist" exact component={lazy(() => import("./pages/Playlist"))} />
               <Route path="/" exact component={lazy(() => import("./pages/Home"))} />
             </Switch>
           </div>

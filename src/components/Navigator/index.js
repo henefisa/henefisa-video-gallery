@@ -10,13 +10,10 @@ export default function Navigator() {
             <Link to="/">Home</Link>
           </Menu.Item>
           <Menu.Item>
-            <Link to="/videos">Videos</Link>
+            <Link to="/playlist">Playlist</Link>
           </Menu.Item>
           <Menu.Item>
             <a href="https://henefisa-blog.web.app">Blog</a>
-          </Menu.Item>
-          <Menu.Item>
-            <Link to="/videos_tag/review">Review</Link>
           </Menu.Item>
         </Menu>
       </div>
