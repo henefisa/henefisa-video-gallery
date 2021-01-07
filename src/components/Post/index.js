@@ -10,7 +10,7 @@ function Wrapper({ children, ...rest }) {
 
 Post.Wrapper = Wrapper;
 
-export default function Post({ title, date, type, path, ...rest }) {
+export default function Post({ title, thumb, date, type, path, ...rest }) {
   const history = useHistory();
   return (
     <div className="post" {...rest}>
@@ -21,7 +21,7 @@ export default function Post({ title, date, type, path, ...rest }) {
           </div>
         )}
         <img
-          src={`https://picsum.photos/300/200?random=${Math.random()}`}
+          src={thumb || `https://picsum.photos/300/200?random=${Math.random()}`}
           alt="random"
           className="post-img"
           onClick={() => history.push(path)}

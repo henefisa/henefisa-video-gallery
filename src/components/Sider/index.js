@@ -1,13 +1,9 @@
-import Login from "../Login";
 import SocialBox from "../SocialBox";
 import Widget from "../Widget";
 
 export default function Sider() {
   return (
     <aside className="sider">
-      <Widget title="Profile">
-        <Login />
-      </Widget>
       <Widget title="Social Subscribox">
         <SocialBox />
       </Widget>
